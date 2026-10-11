@@ -269,6 +269,19 @@ sudo systemctl enable --now slack-alerts
 sudo systemctl status slack-alerts --no-pager     # doit afficher « active (running) »
 ```
 
+### Étape I : les 5 scénarios d'attaque
+
+Pour tester le système, on a joué cinq attaques depuis la Kali (`192.168.204.130`) contre la VM :
+
+| # | Scénario | Commande lancée depuis la Kali | Où on le voit dans Kibana |
+|---|---|---|---|
+| 1 | Scan de ports | `nmap -sS -A -T4 192.168.204.129` | vue Suricatana : alertes `ET SCAN` (capture 2) |
+| 2 | Brute-force SSH | `hydra -l <user> -P <wordlist> ssh://192.168.204.129` | vue Auth : lignes « Failed password » (capture 3) |
+| 3 | Injection SQL | `curl "http://192.168.204.129/?id=1' OR '1'='1"` | vue Apache access : requêtes contenant `OR` (capture 4) |
+| 4 | Traversée de répertoires | `curl "http://192.168.204.129/?file=../../../../etc/passwd"` | vue Apache access : requêtes contenant `passwd` (capture 5) |
+| 5 | SYN flood | `sudo hping3 -S --flood -p 80 192.168.204.129` | vue Suricatana : alertes `LOCAL Possible SYN flood` (capture 6) |
+
+Les captures et leur explication sont dans [CAPTURES.md](CAPTURES.md). Les messages Slack reçus pendant ces tests sont aussi montrés (capture 8).
 ---
 
 ## 4. Où se trouve chaque chose (pense-bête)
