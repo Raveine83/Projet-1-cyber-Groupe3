@@ -1,0 +1,2 @@
+# Ligne ajoutee a la fin de /etc/kibana/kibana.yml (acces depuis un autre PC)
+server.host: "0.0.0.0"

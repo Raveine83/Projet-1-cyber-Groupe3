@@ -1,0 +1,9 @@
+{
+  "cluster": ["monitor"],
+  "indices": [
+    {
+      "names": ["logs-*", "suricata-*", "syslog-*"],
+      "privileges": ["create_index", "create", "index", "write", "view_index_metadata"]
+    }
+  ]
+}

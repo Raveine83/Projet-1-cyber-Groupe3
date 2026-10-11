@@ -1,0 +1,10 @@
+# Modifications faites dans /etc/suricata/suricata.yaml (le reste est inchange)
+
+# 1) Interface reseau ecoutee (ligne ~622, section af-packet) : eth0 -> ens33
+af-packet:
+  - interface: ens33
+
+# 2) Fichiers de regles (ligne ~2198) : on ajoute notre fichier de regles locales
+rule-files:
+  - suricata.rules
+  - /etc/suricata/rules/local.rules

@@ -1,0 +1,14 @@
+[Unit]
+Description=Notifications Slack des alertes Suricata (Projet 1)
+After=network-online.target elasticsearch.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=cours
+ExecStart=/usr/bin/python3 -I /home/cours/projet1/slack_alerts.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
