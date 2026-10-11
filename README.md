@@ -1,5 +1,13 @@
 # Compte rendu : mise en place de la machine de détection d'intrusions
 
+*Projet 1 : système de détection d'anomalies et de gestion de logs pour la sécurité des réseaux (Groupe 3).*
+
+**Équipe :** Younes KARMOUCHE, Florian MORDOHAI, Clément RIEUNEAU
+
+> **En une phrase :** on a monté une « caméra de surveillance » pour le réseau. Suricata repère les comportements suspects, syslog-ng apporte les journaux dans Elasticsearch, Kibana permet de les regarder, et un script envoie un message Slack dès qu'une intrusion est repérée.
+
+**Pour aller plus loin :** [Captures et explications](CAPTURES.md) · [Guide d'utilisation](GUIDE-UTILISATION.md) · [Analyse et conclusion](ANALYSE-CONCLUSION.md) · [Vidéo de démonstration](Video%20Projet.mp4)
+
 ## 1. Le schéma d'ensemble
 
 ```mermaid
