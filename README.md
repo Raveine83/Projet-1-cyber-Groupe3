@@ -161,6 +161,17 @@ sudo systemctl restart suricata
 Test réussi : un `ping 192.168.204.129` depuis le PC Windows a produit dans
 `/var/log/suricata/fast.log` la ligne `TEST ICMP ping detecte`.
 
+**Nos règles pour les scénarios d'attaque.** En plus du test ICMP, on a écrit quatre règles à la suite dans le même fichier `local.rules` (copie dans `configs/suricata/local.rules`) :
+
+| sid | Règle | Ce qu'elle détecte |
+|---|---|---|
+| 1000002 | `LOCAL SQLi attempt detected` | injection SQL : une apostrophe puis `OR` dans l'adresse web demandée |
+| 1000003 | `LOCAL Path traversal attempt detected` | traversée de répertoires : `../` dans une requête vers le port 80 |
+| 1000004 | `LOCAL Possible SSH bruteforce` | brute-force SSH : au moins 3 connexions vers le port 22 en 20 secondes depuis la même IP |
+| 1000005 | `LOCAL Possible SYN flood` | SYN flood : au moins 50 paquets SYN en 5 secondes vers la même cible |
+
+Les alertes obtenues dans Kibana sont montrées dans [CAPTURES.md](CAPTURES.md).
+
 
 ### Étape E : brancher syslog-ng sur Elasticsearch (le facteur)
 
