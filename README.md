@@ -269,6 +269,12 @@ sudo systemctl enable --now slack-alerts
 sudo systemctl status slack-alerts --no-pager     # doit afficher « active (running) »
 ```
 
+Résultat dans Slack (détails dans [CAPTURES.md](CAPTURES.md)) :
+
+![Messages d'alerte reçus dans Slack pour le brute-force SSH et le SYN flood](captures/08-notification-slack.png)
+
+*Capture 8 : messages d'alerte reçus dans Slack pour le brute-force SSH et le SYN flood.*
+
 ### Étape I : les 5 scénarios d'attaque
 
 Pour tester le système, on a joué cinq attaques depuis la Kali (`192.168.204.130`) contre la VM :
