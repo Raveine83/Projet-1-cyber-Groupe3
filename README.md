@@ -282,6 +282,19 @@ Pour tester le système, on a joué cinq attaques depuis la Kali (`192.168.204.1
 | 5 | SYN flood | `sudo hping3 -S --flood -p 80 192.168.204.129` | vue Suricatana : alertes `LOCAL Possible SYN flood` (capture 6) |
 
 Les captures et leur explication sont dans [CAPTURES.md](CAPTURES.md). Les messages Slack reçus pendant ces tests sont aussi montrés (capture 8).
+
+### Étape J : le dashboard Kibana « Sauron »
+
+Pour avoir une vue d'ensemble sans repasser par Discover, on a construit un dashboard personnalisé, « Sauron », avec quatre graphiques sur les 7 derniers jours :
+
+- l'histogramme du nombre d'alertes dans le temps, empilé par signature ;
+- le tableau des signatures les plus fréquentes, avec l'IP source de chacune ;
+- la répartition des codes de réponse HTTP d'Apache ;
+- le top 10 des IP sources des alertes Suricata.
+
+![Dashboard Kibana « Sauron » : alertes dans le temps, signatures et IP sources, top des IP sources, codes HTTP Apache](captures/09-dashboard-personnalise.png)
+
+*Capture 9 : dashboard « Sauron ». Le détail de chaque graphique est expliqué dans [CAPTURES.md](CAPTURES.md).*
 ---
 
 ## 4. Où se trouve chaque chose (pense-bête)
